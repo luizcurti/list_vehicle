@@ -8,4 +8,11 @@ switch (process.env.ENV) {
       path: resolve(__dirname, '../../.env'),
     });
     break;
+ 
+  case 'TEST':
+    console.log('[ENVIRONMENT] TEST');
+    configDotenv({
+      path: resolve(__dirname, '../../.test.env'),
+    });
+  break;  
 }

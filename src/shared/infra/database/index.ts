@@ -4,9 +4,11 @@ import {
 } from 'typeorm';
 
 import ormconfig from './config/ormconfig';
+import ormconfigTest from './config/ormconfigTest';
 
 const configs = {
   LOCAL: ormconfig as ConnectionOptions[],
+  TEST: ormconfigTest as ConnectionOptions[],
 };
 
 const dataBaseConfigs = configs[process.env.ENV] || (ormconfig as ConnectionOptions[]);

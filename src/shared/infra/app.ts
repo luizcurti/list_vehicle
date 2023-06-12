@@ -7,7 +7,7 @@ import cors from 'cors';
 
 import Database from '@shared/infra/database/index';
 
-import { routes } from './http/routes/index';
+import { routes } from '@shared/infra/http/routes';
 import { handlingNotFound } from '@shared/infra/http/middlewares/handlingNotFound';
 
 import '@shared/containers';
@@ -44,6 +44,10 @@ class App {
     this.server.use(handlingNotFound);
 
     console.log('[SERVER] ROUTES REGISTERED');
+  }
+
+  getExpressApp(): express.Application {
+    return this.server;
   }
 }
 

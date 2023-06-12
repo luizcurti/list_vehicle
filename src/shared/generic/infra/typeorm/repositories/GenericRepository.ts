@@ -1,4 +1,5 @@
 import {
+  DeepPartial,
   EntityTarget,
   FindManyOptions,
   FindOneOptions,
@@ -16,8 +17,8 @@ class GenericRepository<T> implements IGenericRepository<T> {
   }
 
   async create(data: object): Promise<T> {
-    const el = this.repository.create(data);
-    await this.repository.save(el);
+    const el = this.repository.create(data as DeepPartial<T>);
+    await this.repository.save(el as DeepPartial<T>);
 
     return el;
   }
@@ -34,7 +35,7 @@ class GenericRepository<T> implements IGenericRepository<T> {
   }
 
   async update(el: T): Promise<T> {
-    return this.repository.save(el);
+    return this.repository.save(el as DeepPartial<T>);
   }
 
   async remove(el: T): Promise<void> {
